@@ -8,7 +8,7 @@ import os
 import threading
 import random
 
-server_address = ('172.16.16.104', 16000)
+server_address = ('172.16.16.104', 12000)
 
 def make_socket(destination_address='localhost',port=12000):
     try:
