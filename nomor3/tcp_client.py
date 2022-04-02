@@ -78,7 +78,10 @@ def getdatapemain(nomor=0,is_secure=False):
         pass
     else:
         print("Failed to get response")
-    print("==> Got data: " + str(hasil))
+    if is_secure:
+        print("==> Got data (secure): " + str(hasil))
+    else:
+        print("==> Got data: " + str(hasil))
     return hasil
 
 def lihatversi(is_secure=False):
@@ -101,7 +104,7 @@ if __name__=='__main__':
         request_sent = 0
         for x in range(i):
             print("Sending request number {} of {} requests".format(x+1, i))
-            threads[x] = threading.Thread(target=getdatapemain, args=(random.randint(1, 4),False))
+            threads[x] = threading.Thread(target=getdatapemain, args=(random.randint(1, 4),True))
             threads[x].start()
             request_sent += 1
 

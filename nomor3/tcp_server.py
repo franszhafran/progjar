@@ -108,7 +108,10 @@ def run_server(server_address,is_secure=False):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     # Bind the socket to the port
-    logging.warning(f"starting up on {server_address}")
+    if is_secure:
+        logging.warning(f"starting up secure server on {server_address}")
+    else:
+        logging.warning(f"starting up on {server_address}")
     sock.bind(server_address)
     # Listen for incoming connections
     sock.listen(1000)
